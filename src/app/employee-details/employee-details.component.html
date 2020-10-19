@@ -1,0 +1,25 @@
+<div class="row mt-3">
+    <div class="card col-md-8 offset-2 p-3">
+        <div class="row no-gutters">
+            <div class="col-auto">
+                <img width="300px" src="{{empDetails.image}}" class="img-fluid" alt="">
+            </div>
+            <div class="col">
+                <div class="card-block px-2">
+                    <h4 class="card-title text-capitalize text-lg-left"> Employee Name : {{empDetails.name}}</h4>
+                    <p class="card-text"> Email : {{empDetails.email}}</p>
+                    <p class="card-text">Phone Number :{{empDetails.phone}}</p>
+                    <p class="card-text">Address :{{empDetails.address}}</p>
+                    <a class="btn btn-primary btn-sm">Edit Profile</a>
+                    <a class="btn btn-info btn-sm" routerLink='/employee-list'>Back</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="card-footer w-100 text-muted">
+            <agm-map [latitude]="lat" [longitude]="lng">
+                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+            </agm-map>
+        </div>
+    </div>
+</div>

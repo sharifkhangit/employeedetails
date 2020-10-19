@@ -1,0 +1,69 @@
+<div class="card mt-3 col-md-6 offset-3">
+    <h5 class="card-header info-color white-text text-center py-4">
+        <strong>Add Employee</strong>
+    </h5>
+    <div class="card-body px-lg-5 pt-3">
+        <form style="color: #757575;" [formGroup]="_empForm" (ngSubmit)="onSubmit(_empForm.value)">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="name">Name</label>
+
+                    <input type="text" id="name" class="form-control" name="name" formControlName='name'>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="email">Email</label>
+
+                    <input type="email" id="email" class="form-control" name="email" formControlName='email'>
+                </div>
+
+            </div>
+            <div class="col-md-12">
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+
+                    <input type="text" id="phone" class="form-control" name="phone" formControlName="phone">
+
+                </div>
+
+            </div>
+            <div class="col-md-12">
+
+                <div class="form-group">
+                    <label for="image">Profile Image</label>
+
+                    <input type="file" id="image" class="form-control" name="image" formControlName="profile-image" (change)="handleUpload($event)">
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <webcam [height]="205" [width]="600" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam" [allowCameraSwitch]="allowCameraSwitch" [imageQuality]="0.5"></webcam>
+                        <a class="btn btn-info btn-sm" (click)="openWebCam();">Capture</a>
+                        <a class="btn btn primary btn-sm" *ngIf="showWebcam" (click)="triggerSnapshot();">Take A Snapshot</a>
+                    </div>
+                    <div class="snapshot col-md-6 " *ngIf="webcamImage">
+                        <h2>Nice one!</h2>
+                        <img width="270px" height="160px" [src]="webcamImage.imageAsDataUrl" />
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="location">Current location/Lat long</label>
+                    <input type="text" id="location" class="form-control" name="location" formControlName='location'>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="address">Address</label>
+
+                    <input type="text" id="address" class="form-control" name="address" formControlName="address" ngx-google-places-autocomplete [options]='options' (onAddressChange)="AddressChange($event)">
+                </div>
+            </div>
+            <button class="btn btn-primary float-right" type="submit" [disabled]="!_empForm.valid">Submit</button>
+        </form>
+    </div>
+</div>
